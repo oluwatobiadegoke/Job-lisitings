@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap');
+
+:root {
+  --background: hsl(180, 52%, 96%);
+  --filtertablets: hsl(180, 31%, 95%);
+  --buttonsbg: hsl(180, 8%, 52%);
+  --jobdescription: hsl(180, 14%, 20%);
+  --color: hsl(180, 29%, 50%);
+  --fontfamily: 'Spartan', sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
