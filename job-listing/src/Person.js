@@ -23,23 +23,25 @@ const Person = () => {
                 tools,
             } = person
 
+            console.log(logo)
+
             return (
                 <section key={id}>
-                    <img src={`${logo}`} alt={company} />
+                    <img src={logo} alt={company} />
                     <div>
-                    <div>
-                        <p>{company}</p>
-                        {isnew ? <p>new</p> : null}
-                        {featured ? <p>featured</p> : null}
-                    </div>
-                    <h1>{position}</h1>
-                    <div>
-                        <p>{postedAt}</p>
-                        <div className="dot"></div>
-                        <p>{contract}</p>
-                        <div className="dot"></div>
-                        <p>{location}</p>
-                    </div>
+                        <div>
+                            <p>{company}</p>
+                            {isnew ? <p>new</p> : null}
+                            {featured ? <p>featured</p> : null}
+                        </div>
+                        <h1>{position}</h1>
+                        <div>
+                            <p>{postedAt}</p>
+                            <div className="dot"></div>
+                            <p>{contract}</p>
+                            <div className="dot"></div>
+                            <p>{location}</p>
+                        </div>
                     </div>
                     <div>
                     <button>{role}</button>
