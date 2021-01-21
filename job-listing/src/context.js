@@ -11,7 +11,8 @@ const AppProvider = ({children}) => {
 
     return (
         <AppContext.Provider value={{
-            people
+            people,
+            filterOpen,
         }}>
             {children}
         </AppContext.Provider>
