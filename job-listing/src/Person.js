@@ -3,17 +3,10 @@ import { useGlobalContext } from './context'
 
 const Person = () => {
 
-    const { 
-        people, 
-        handleRoleFilter, 
-        handleLevelFilter, 
-        handleLangFilter,
-        handleToolsFilter,
-    } 
-    = useGlobalContext();
+    const { newPeople, handleFilter} = useGlobalContext();
     return (
         <div>
-            {people.map((person) => {
+            {newPeople.map((person) => {
                     const {
                     id, 
                     company,
@@ -28,7 +21,15 @@ const Person = () => {
                     location,
                     languages,
                     tools,
+
                 } = person
+                const thetags = [role, level]; 
+                if(languages) {
+                    thetags.push(...languages)
+                }
+                if(tools) {
+                    thetags.push(...tools)
+                }
 
                 return (
                     <section key={id}>
@@ -49,21 +50,16 @@ const Person = () => {
                             </div>
                         </div>
                         <div>
-                            <button onClick={() => handleRoleFilter(role)}>{role}</button>
-                            <button onClick={() => handleLevelFilter(level)}>{level}</button>
-                            {languages.map((language, index) => {
-                                return(
-                                <button onClick={() => handleLangFilter(language)} key={index}>{language}</button>
-                                )
-                            })}
-                            {tools.length > 0 ? 
-                                tools.map((tool, index) => {
-                                return(
-                                    <button onClick={() => handleToolsFilter(tool)} key={index}>{tool}</button>
-                                )
-                                }): null
+                            {
+                                thetags.map((thetag, index) => {
+                                    return(
+                                        <button key={index} onClick={() => handleFilter(thetag)}>
+                                            {thetag}
+                                        </button>
+                                    )
+                                })
                             }
-                            </div>
+                        </div>
                     </section>
                 );
             })} 

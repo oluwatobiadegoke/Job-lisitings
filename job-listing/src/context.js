@@ -6,119 +6,53 @@ const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
 
-    const [people, setPeople] = useState(data);
-    const [filterOpen, setFilterOpen] = useState(false);
-    const [tags, setTags] = useState([]);
+    const [people, setPeople] = useState([]);
+    const [filters, setFilters] = useState([])
 
-    const handleRoleFilter = (role) => {
-        if(people.length === data.length) {
-            const newPeople = data.filter((person) => person.role === role)
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(role)) {
-                setTags([...tags, role])
-            } else {
-                setTags([...tags])
-            }
+
+    useEffect(() => {
+        setPeople(data)
+    }, [])
+
+    const theFilter = ({role, level, languages, tools}) => {
+        if(filters.length === 0) {
+            return true
         }
-        if(data.length > people.length) {
-            const newPeople = people.filter((person) => person.role === role)
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(role)) {
-                setTags([...tags, role])
-            } else {
-                setTags([...tags])
-            }
+        const tags = [role, level]
+        if(languages) {
+            tags.push(...languages)
         }
+        if(tools) {
+            tags.push(...tools)
+        }
+        return filters.every((filter) => tags.includes(filter))
     }
 
-    const handleLevelFilter = (level) => {
-        if(people.length === data.length) {
-            const newPeople = data.filter((person) => person.level === level)
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(level)) {
-                setTags([...tags, level])
-            } else {
-                setTags([...tags])
-            }
+    const handleFilter = (tag) => {
+        if(filters.includes(tag)) {
+            return true;
         }
-        if(data.length > people.length) {
-            const newPeople = people.filter((person) => person.level === level)
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(level)) {
-                setTags([...tags, level])
-            } else {
-                setTags([...tags])
-            }
-        }
+        setFilters([...filters, tag]);
+    }
+    
+    const newPeople = people.filter(theFilter)
+
+    const removeFilter = (filt) => {
+        const newfilter = filters.filter(filter => filter !== filt)
+        setFilters(newfilter);
     }
 
-    // useEffect(() => console.log(tags), [tags])
-    const handleLangFilter = (language) => {
-        if(people.length === data.length) {
-            const newPeople = data.filter((item) => item.languages.includes(language))
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(language)) {
-                setTags([...tags, language])
-            } else {
-                setTags([...tags])
-            }
-        }
-        if(data.length > people.length) {
-            const newPeople = people.filter((item) => item.languages.includes(language))
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(language)) {
-                setTags([...tags, language])
-            } else {
-                setTags([...tags])
-            }
-        }
-    }
-
-    const handleToolsFilter = (tool) => {
-        if(people.length === data.length) {
-            const newPeople = data.filter((item) => item.tools.includes(tool))
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(tool)) {
-                setTags([...tags, tool])
-            } else {
-                setTags([...tags])
-            }
-        }
-        if(data.length > people.length) {
-            const newPeople = people.filter((item) => item.tools.includes(tool))
-            setPeople(newPeople);
-            setFilterOpen(true);
-            if(!tags.includes(tool)) {
-                setTags([...tags, tool])
-            } else {
-                setTags([...tags])
-            }
-        }
-    }
-
-    const removeTag = (tag) => {
-        const newTag = tags.filter((item) => item !== tag);
-        setTags(newTag);
-        
+    const clearFilters = () => {
+        setFilters([]);
     }
 
     return (
         <AppContext.Provider value={{
-            people,
-            filterOpen,
-            handleRoleFilter,
-            handleLevelFilter,
-            handleLangFilter,
-            handleToolsFilter,
-            tags,
-            removeTag
+            newPeople,
+            filters,
+            handleFilter,
+            removeFilter,
+            clearFilters
         }}>
             {children}
         </AppContext.Provider>

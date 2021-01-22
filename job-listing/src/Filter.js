@@ -4,16 +4,16 @@ import { FaTimes } from "react-icons/fa";
 
 const Filter = () => {
 
-    const { tags, removeTag } = useGlobalContext();
+    const { filters, removeFilter, clearFilters } = useGlobalContext();
     return (
         <section>
             <ul>
                 {
-                    tags.map((tag, index) => {
+                    filters.map((tag, index) => {
                         return(
                             <li key={index}>
                                 {tag}
-                                <button onClick={() =>removeTag(tag)}>
+                                <button onClick={() => removeFilter(tag)}>
                                     <FaTimes/>
                                 </button>
                             </li>
@@ -21,6 +21,9 @@ const Filter = () => {
                     })
                 }
             </ul>
+            <button onClick={clearFilters}>
+                Clear
+            </button>
         </section>
     )
 }

@@ -5,11 +5,11 @@ import { useGlobalContext } from './context'
 
 const App = () => {
 
-  const { filterOpen } = useGlobalContext();
+  const { filters } = useGlobalContext();
 
   return (
     <div className="App">
-      {filterOpen && <Filter />}
+      {filters.length > 0 && <Filter />}
       <Person />
     </div>
   );
