@@ -6,24 +6,29 @@ const Filter = () => {
 
     const { filters, removeFilter, clearFilters } = useGlobalContext();
     return (
-        <section>
-            <ul>
+        <section className="all-filter">
+            <ul className="filter-section">
                 {
                     filters.map((tag, index) => {
                         return(
-                            <li key={index}>
-                                {tag}
-                                <button onClick={() => removeFilter(tag)}>
-                                    <FaTimes/>
+                            <li key={index} className="filter">
+                                <p>{tag}</p>
+                                <button 
+                                className="filter-btn"
+                                onClick={() => removeFilter(tag)}
+                                >
+                                    <FaTimes className="filter-icon"/>
                                 </button>
                             </li>
                         )
                     })
                 }
             </ul>
-            <button onClick={clearFilters}>
-                Clear
-            </button>
+            <div className="clear-all" onClick={clearFilters}>
+                <p>
+                   Clear 
+                </p>
+            </div>
         </section>
     )
 }

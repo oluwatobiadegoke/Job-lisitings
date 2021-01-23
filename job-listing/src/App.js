@@ -9,9 +9,13 @@ const App = () => {
 
   return (
     <div className="App">
-      {filters.length > 0 && <Filter />}
-      <Person />
+      <div className="uptop"></div>
+      <div className="cont">
+        {filters.length > 0 && <Filter />}
+        <Person />
     </div>
+    </div>
+    
   );
 }
 

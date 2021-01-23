@@ -13,4 +13,265 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: var(--fontfamily)
 }
+
+body {
+  background-color: var(--background);
+  position: relative;
+}
+
+.cont {
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+}
+
+.uptop {
+  height: 150px;
+  width: 100%;
+  background: url(./images/bg-header-mobile.svg);
+  background-repeat: no-repeat;
+  background-color: hsl(177, 52%, 46%);
+  background-size: cover;
+}
+
+.jobs {
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 60px 0px;
+  padding: 10px 30px;
+  position: relative;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 1px 10px rgb(107,178,172);
+  transition: all .1s ease-in ;
+}
+
+.jobs:hover {
+  border-left: 7px solid rgb(107,178,172);
+}
+
+.jobs img {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  top: -40px;
+}
+.line {
+  height: 2px;
+  background: rgb(160,174,192);
+}
+
+.top {
+  margin: 55px 0px 15px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.top p {
+  color:rgb(56,178,172);
+  font-weight: 700;
+}
+
+.top button {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  min-width: 30px;
+  padding: 7px 10px;
+  border-radius: 15px;
+  pointer-events: none;
+  outline: none;
+  font-weight: 700;
+}
+
+.isnew {
+  color: rgb(230,255,250);
+  background: rgb(56,178,172);
+}
+
+.feat {
+  color: white;
+  background: rgb(45,55,72);
+}
+
+.below {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px 15px 0px;
+  color: rgb(74,85,128)
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background: hsl(180, 8%, 52%);
+  margin: 0px 10px;
+}
+
+.tags {
+  margin: 15px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+}
+
+.tags button {
+  background: var(--filtertablets);
+  color: rgb(107,178,172);
+  height: 40px;
+  border: none;
+  margin-right: 15px;
+  padding: 0 15px;
+  font-weight: 700;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.tags button:hover {
+  color: var(--filtertablets);
+  background: rgb(107,178,172);
+}
+
+.all-filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px 30px;
+  box-shadow: 2px 1px 10px rgb(107,178,172);
+  border-radius: 5px;
+  margin-top: -30px;
+}
+
+.clear-all {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: transparent;
+  color: rgb(107,178,172);
+  cursor: pointer;
+  padding: none;
+  transition: all;
+  width: 30px;
+}
+
+.clear-all:hover p {
+  border-bottom: 3px solid  rgb(107,178,172);
+}
+
+.filter-section {
+  flex: 6;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+}
+
+.filter {
+  height: 40px;
+  background: var(--filtertablets);
+  color: rgb(107,178,172);
+  margin-right: 15px;
+  /* padding: 0 15px; */
+  font-weight: 700;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter > p {
+  margin: 0 15px;
+}
+
+.filter button {
+  height: 100%;
+  width: 40px;
+  background: rgb(107,178,172);
+  outline: none;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  cursor: pointer;
+  transition: all;
+}
+
+.filter button:hover {
+  background: rgb(45,55,72);
+}
+
+.filter-icon {
+  width: 60%;
+  height: 60%;
+  fill: white;
+}
+
+@media screen and (min-width: 1024px) {
+
+  .uptop {
+    background: url(./images/bg-header-desktop.svg);
+    height: 70px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-color: hsl(177, 52%, 46%);
+    background-size: cover;
+  }
+
+  .jobs {
+    height: 200px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px 0px;
+  }
+  .jobs img {
+    left: 10px;
+    top: 60px
+  }
+
+  .info {
+    margin-left: 110px;
+    flex: 1;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .tags {
+    flex: 1;
+  }
+
+  .top {
+    margin: 15px 0px 15px 0px;
+  }
+
+  .cont {
+    padding: 0 80px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    .jobs img {
+      left: 30px;
+    }
+
+    .info {
+      margin-left: 130px;
+      flex: 1;
+    }
+
+    .cont {
+      padding: 0 150px;
+    }
+  }
+
+} 

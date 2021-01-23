@@ -3,7 +3,7 @@ import { useGlobalContext } from './context'
 
 const Person = () => {
 
-    const { newPeople, handleFilter} = useGlobalContext();
+    const { newPeople, handleFilter } = useGlobalContext();
     return (
         <div>
             {newPeople.map((person) => {
@@ -32,16 +32,16 @@ const Person = () => {
                 }
 
                 return (
-                    <section key={id}>
+                    <section className="jobs" key={id}>
                         <img src={logo} alt={company} />
-                        <div>
-                            <div>
+                        <div className="info">
+                            <div className="top">
                                 <p>{company}</p>
-                                {isnew ? <p>new</p> : null}
-                                {featured ? <p>featured</p> : null}
+                                {isnew ? <button className="isnew">NEW!</button> : null}
+                                {featured ? <button className="feat">FEATURED</button> : null}
                             </div>
-                            <h1>{position}</h1>
-                            <div>
+                            <h3>{position}</h3>
+                            <div className="below">
                                 <p>{postedAt}</p>
                                 <div className="dot"></div>
                                 <p>{contract}</p>
@@ -49,11 +49,12 @@ const Person = () => {
                                 <p>{location}</p>
                             </div>
                         </div>
-                        <div>
+                        <div className="line"></div>
+                        <div className="tags">
                             {
                                 thetags.map((thetag, index) => {
                                     return(
-                                        <button key={index} onClick={() => handleFilter(thetag)}>
+                                        <button className="tag-btn" key={index} onClick={() => handleFilter(thetag)}>
                                             {thetag}
                                         </button>
                                     )
